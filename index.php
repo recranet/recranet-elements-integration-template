@@ -1,6 +1,31 @@
-<?php !isset($lang) ? $lang = 'nl' : '' ?>
+<?php 
+
+    // Edit translations here
+    $translations = [
+        'nl' => [
+            'backToWebsite' => 'Terug naar website'
+        ],
+        'de' => [
+            'backToWebsite' => 'Zurück zur Website'
+        ],
+        'en' => [
+            'backToWebsite' => 'Back to website'
+        ]
+    ];
+
+    $requestUri = $_SERVER['REQUEST_URI'];
+    $uriSegments = explode('/', $requestUri);
+
+    if (!empty($uriSegments[1])) {
+        $languageCode = $uriSegments[1];
+    } else {
+        $languageCode = 'nl'; // Default fallback language
+    }    
+?>
+
 <?php !isset($seoTitle) ? $seoTitle = 'Reserveren' : '' ?>
 <?php !isset($title) ? $title = 'Reserveren' : '' ?>
+
 
 <!DOCTYPE html>
 
@@ -13,7 +38,7 @@
 
     <meta name="description" content>
 
-    <base href="/<?php echo $lang; ?>">
+    <base href="/<?php echo $languageCode; ?>">
 
     <link rel="icon" type="image/png" href="favicon.png">
 
@@ -25,11 +50,11 @@
     <script type="text/javascript">
         window.recranetConfig = {
             organization: '1000',
-            locale: '<?php echo $lang; ?>',
+            locale: '<?php echo $languageCode; ?>',
             currency: 'EUR',
         };
     </script>
-    <script src="https://static.recranet.com/elements/<?php echo $lang; ?>/sdk.js?<?php echo rand(); ?>" async></script>
+    <script src="https://static.recranet.com/elements/<?php echo $languageCode; ?>/sdk.js?<?php echo rand(); ?>" async></script>
     <header>
         <div class="header-image">
             <div class="container">
@@ -41,6 +66,11 @@
     <main>
         <div class="py-5">
             <div class="container">
+                <?php if (isset($translations[$languageCode]['backToWebsite'])) : ?>
+                    <div class="d-flex justify-content-lg-end">
+                        <a href="https://recranet.com" class="btn btn-outline-primary rounded-pill mb-4"><?php echo $translations[$languageCode]['backToWebsite']; ?></a>
+                    </div>
+                <?php endif; ?>
                 <div class="row">
                     <div class="col">
                         <recranet-accommodations class="recranet-element"></recranet-accommodations>

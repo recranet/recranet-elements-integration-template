@@ -1,6 +1,5 @@
 <?php
 
-$lang = 'nl';
 $seoTitle = 'Reserveren bij parknaam';
 $title = 'Reserveren';
 

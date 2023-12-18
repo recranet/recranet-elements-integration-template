@@ -1,7 +1,6 @@
 <?php
 
-$lang = 'en';
 $seoTitle = 'Reserveren bij parknaam';
-$title = 'Reserveren';
+$title = 'Book';
 
 require_once '../index.php';
