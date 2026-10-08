@@ -10,6 +10,9 @@
         ],
         'en' => [
             'backToWebsite' => 'Back to website'
+        ],
+        'fr' => [
+            'backToWebsite' => 'Retour au site'
         ]
     ];
 
